@@ -7,9 +7,15 @@ import time,random,sys,json,codecs,threading,glob,re,base64,requests,urllib
 
 cl = LINETCR.LINE()
 #cl.login(qr=True)
-cl.login(token="EmilgKkFZcpoZUkjcaA8.7ofmwUrMKFspa8t9mXW+2a.QTjciAbfidM+OS0D7P1Xh/xjK3eWa5Hr4PY+HBKSdKU=")
+cl.login(qr=True)
 cl.loginResult()
 
+helpMessage ="""
+[ Spamcontact @ ]
+[ Bye ]
+[ Spam: ]
+[ Taggal ]
+"""
 ki = kk = kc = cl 
 
 print "login success"
@@ -30,9 +36,9 @@ wait = {
     'leaveRoom':True,
     'timeline':True,
     'autoAdd':True,
-    'message':"Thanks for add me, Jgn lupa bahagia ya, mau akunmu setengah bot pm aja ya »»»»» http://line.me/ti/p/GkwfNjoPDH «««««",
+    'message':"Akun Official line.me/ti/p/~@enr7503k",
     "lang":"JP",
-    "comment":"Thanks for add me, Jgn lupa bahagia ya, mau akunmu setengah bot pm aja ya »»»»» http://line.me/ti/p/GkwfNjoPDH «««««",
+    "comment":"Akun Official line.me/ti/p/~@enr7503k",
     "commentOn":False,
     "commentBlack":{},
     "wblack":False,
@@ -73,7 +79,7 @@ def autolike():#Like By Syams Copyright 2017
         if hasil['result']['posts'][zx]['postInfo']['liked'] == False:#Like By Syams Copyright 2017
           try:    #Like By Syams Copyright 2017
             cl.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)#Like By Syams Copyright 2017
-            cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Autolike By Kris-thea\n\nBot Auto Like Ini Gunakanlah Dengan Bijak（＾ω＾）\nAuto Like By »»»»» http://line.me/ti/p/GkwfNjoPDH «««««")#Like By Syams Copyright 2017
+            cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Akun Official line.me/ti/p/~@enr7503k")#Like By Syams Copyright 2017
             print "Like"#Like By Syams Copyright 2017
           except:#Like By Syams Copyright 2017
             pass#Like By Syams Copyright 2017
@@ -173,8 +179,12 @@ def bot(op):
 #----------------------[Masukin Semua SC Yang Ente Pengen Disini]----------------------#
         if op.type == 25:
             msg = op.message
-            
-            
+
+         elif msg.text in ["Key","help","Help"]:
+            if wait["lang"] == "JP":
+                  cl.sendText(msg.to,helpMessage)
+              else:
+                  cl.sendText(msg.to,helpt)            
 #----------------------------[Cek SPEED]----------------------------#WORK
             if msg.text in ["Speed","speed"]:
                     start = time.time()
@@ -183,7 +193,7 @@ def bot(op):
 #----------------------------[Cek SPEED]----------------------------#WORK
 
 #----------------------------[TAG ALL]----------------------------#WORK
-            if msg.text in ["Summon"]:
+            if msg.text in ["Tagall"]:
 			    group = cl.getGroup(msg.to)
 			    nama = [contact.mid for contact in group.members]
 			    cb = ""
